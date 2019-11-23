@@ -1,0 +1,12 @@
+gs/
+generated/
+*.versionsBackup
+dump.rdb
+
+# IntelliJ
+.idea
+*.iws
+*.iml
+*.ipr
+
+# maven

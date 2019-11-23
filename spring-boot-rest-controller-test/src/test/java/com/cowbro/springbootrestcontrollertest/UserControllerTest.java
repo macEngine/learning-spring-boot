@@ -21,6 +21,8 @@ public class UserControllerTest {
 
   public MockMvc mvc;
 
+  // Pull in the application context created by @ContextConfiguration
+  // 使用了 @WebMvcTest，会自动加载默认配置，方便单元测试使用
   @Autowired
   WebApplicationContext webApplicationContext;
 
@@ -32,7 +34,8 @@ public class UserControllerTest {
   @Test
   public void testGetMobileNumber() throws Exception {
     MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/api/user/getMobileNumber")
-        .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        .accept(MediaType.APPLICATION_JSON_VALUE))  // 指定客户端能够接收的内容类型
+        .andReturn();
 
     int status = mvcResult.getResponse().getStatus();
     assertEquals(200, status);
