@@ -1,4 +1,4 @@
-package com.cowbro.springboot.testrestcontroller;
+package com.cowbro.springbootrestcontrollertest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
