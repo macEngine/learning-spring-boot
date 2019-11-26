@@ -19,6 +19,11 @@ public class UserController {
     return request.mobileNumber;
   }
 
+  @PostMapping(value = "/loginWhenNoValidAnnotation")
+  public String loginWhenNoValidAnnotation(@RequestBody @Valid UserLoginRequest request) {
+    return request.mobileNumber;
+  }
+
   @PostMapping(value = "/login")
   public String login(@RequestBody @Valid UserLoginRequest request) {
     return request.mobileNumber;

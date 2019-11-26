@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static junit.framework.TestCase.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -61,6 +60,7 @@ public class TestRequestBodyAnnotation {
     String content = mvcResult.getResponse().getContentAsString();
     assertEquals("", content);
   }
+
   /**
    * 添加 @RequestBody 后，参数值正确被绑定，返回输入时的电话号码。
    *
@@ -84,6 +84,6 @@ public class TestRequestBodyAnnotation {
     int status = mvcResult.getResponse().getStatus();
     assertEquals(200, status);
     String content = mvcResult.getResponse().getContentAsString();
-    assertEquals( userLoginRequest.mobileNumber, content);
+    assertEquals(userLoginRequest.mobileNumber, content);
   }
 }
