@@ -1,4 +1,4 @@
-package com.cowbro.springbootrestcontrollertest;
+package com.cowbro.springboot.testrestcontroller;
 
 import org.springframework.web.bind.annotation.*;
 

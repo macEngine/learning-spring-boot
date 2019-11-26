@@ -1,4 +1,4 @@
-package com.cowbro.springbootrestcontrollertest;
+package com.cowbro.springboot.testrestcontroller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,5 +1,7 @@
-package com.cowbro.springbootrestcontrollertest;
+package com.cowbro.springboot.testrequestbodyannotation;
 
+import com.cowbro.springboot.testrestcontroller.UserLoginRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +15,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
 public class SpringBootAnnotationTest_testRequestBody {
+  ObjectMapper objectMapper = new ObjectMapper();
 
   public MockMvc mvc;
 
@@ -32,9 +35,14 @@ public class SpringBootAnnotationTest_testRequestBody {
   }
 
   @Test
-  public void testGetMobileNumber() throws Exception {
-    MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/api/user/getMobileNumber")
-        .accept(MediaType.APPLICATION_JSON_VALUE))  // 指定客户端能够接收的内容类型
+  public void testLogin() throws Exception {
+    UserLoginRequest userLoginRequest = new UserLoginRequest();
+    userLoginRequest.mobileNumber = "18610000000";
+    //userLoginRequest.verificationCode = "141212";
+    System.out.println(objectMapper.writeValueAsString(userLoginRequest));
+    MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post("/api/user/login")
+        .contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(userLoginRequest)))  // 指定客户端能够接收的内容类型
         .andReturn();
 
     int status = mvcResult.getResponse().getStatus();
