@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 public class UserLoginRequest {
   @NotBlank(message = "手机号不能为空")
