@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.springboot.testannotation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.testannotation.UserLoginRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
-public class TestRequestBodyAnnotation {
+public class Test_RequestBody_Annotation {
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -41,24 +42,22 @@ public class TestRequestBodyAnnotation {
    * @throws Exception
    */
   @Test
-  public void whenNotUserRequestBody_thenWrong() throws Exception {
+  public void whenNoRequestBodyAnnotation_thenWrong() throws Exception {
 
     UserLoginRequest userLoginRequest = new UserLoginRequest();
     userLoginRequest.mobileNumber = "18610000000";
     userLoginRequest.verificationCode = "141212";
 
-    MvcResult mvcResult =
-        mvc.perform(
-            MockMvcRequestBuilders.post("/api/user/loginWrong1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
-                .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型
-        ).andReturn();
-
-    int status = mvcResult.getResponse().getStatus();
-    assertEquals(200, status);
-    String content = mvcResult.getResponse().getContentAsString();
-    assertEquals("", content);
+    try {
+      mvc.perform(
+          MockMvcRequestBuilders.post("/api/user/loginWhenNoRequestBodyAnnotation")
+              .contentType(MediaType.APPLICATION_JSON)
+              .accept(MediaType.APPLICATION_JSON_VALUE)
+              .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型
+      ).andReturn();
+    } catch (Exception e) {
+      // request.mobileNumber is null
+    }
   }
 
   /**
@@ -67,10 +66,10 @@ public class TestRequestBodyAnnotation {
    * @throws Exception
    */
   @Test
-  public void whenNotUserRequestBody_thenCorrect() throws Exception {
+  public void whenUseRequestBodyAnnotation_thenCorrect() throws Exception {
 
     UserLoginRequest userLoginRequest = new UserLoginRequest();
-    userLoginRequest.mobileNumber = "18610000000";
+    userLoginRequest.mobileNumber = "18610000001";
     userLoginRequest.verificationCode = "141212";
 
     MvcResult mvcResult =
@@ -84,6 +83,6 @@ public class TestRequestBodyAnnotation {
     int status = mvcResult.getResponse().getStatus();
     assertEquals(200, status);
     String content = mvcResult.getResponse().getContentAsString();
-    assertEquals(userLoginRequest.mobileNumber, content);
+    assertEquals("success", content);
   }
 }

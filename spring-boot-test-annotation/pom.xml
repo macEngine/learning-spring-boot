@@ -8,10 +8,10 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.springboot</groupId>
+    <artifactId>spring-boot-test-annotation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>spring-boot-test-annotation</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

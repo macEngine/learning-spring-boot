@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.springboot.testannotation;
 
 
 import javax.validation.constraints.NotBlank;

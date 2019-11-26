@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.springboot.testrestcontroller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.testrestcontroller.UserLoginRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,7 +63,7 @@ public class TestRestApi {
   @Test
   public void whenLogin_thenCorrect() throws Exception {
 
-    UserLoginRequest userLoginRequest = new UserLoginRequest();
+    com.springboot.testrestcontroller.UserLoginRequest userLoginRequest = new UserLoginRequest();
     userLoginRequest.mobileNumber = "18610000000";
     userLoginRequest.verificationCode = "141212";
 

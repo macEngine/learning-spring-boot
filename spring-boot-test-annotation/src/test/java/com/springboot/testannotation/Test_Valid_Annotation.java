@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.springboot.testannotation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.testannotation.UserLoginRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +10,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.context.WebApplicationContext;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
@@ -40,18 +44,18 @@ public class Test_Valid_Annotation {
   @Test
   public void whenNoValidAnnotation_thenCorrect() throws Exception {
 
-    try {
-      UserLoginRequest userLoginRequest = new UserLoginRequest();
+    UserLoginRequest userLoginRequest = new UserLoginRequest();
 
-      mvc.perform(
-          MockMvcRequestBuilders.post("/api/user/loginWhenNoValidAnnotation")
-              .contentType(MediaType.APPLICATION_JSON)
-              .accept(MediaType.APPLICATION_JSON_VALUE)
-              .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型
-      ).andReturn();
-    } catch (MethodArgumentNotValidException e) {
-      // MethodArgumentNotValidException 应该被 catch。
-    }
+    MvcResult mvcResult = mvc.perform(
+        MockMvcRequestBuilders.post("/api/user/loginWhenNoValidAnnotation")
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON_VALUE)
+            .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型
+    ).andReturn();
+    int status = mvcResult.getResponse().getStatus();
+    assertEquals(200, status);
+    String content = mvcResult.getResponse().getContentAsString();
+    assertEquals("success", content);
   }
 
   /**
