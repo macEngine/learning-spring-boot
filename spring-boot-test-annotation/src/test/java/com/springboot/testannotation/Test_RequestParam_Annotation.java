@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
-public class Test_RequestBody_Annotation {
+public class Test_RequestParam_Annotation {
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -36,53 +36,30 @@ public class Test_RequestBody_Annotation {
 
 
   /**
-   * 测试不添加 @RequestBody 时，参数值不能正确被绑定，返回空。
+   * 添加 @RequestParam，参数值正确被绑定。
+   * 注意：@RequestParam接收的参数来自requestHeader中，即请求头。Content-Type：“application/x-www-form-urlencoded”
    *
    * @throws Exception
    */
   @Test
-  public void whenNoRequestBodyAnnotation_thenWrong() throws Exception {
-
-    UserLoginRequest userLoginRequest = new UserLoginRequest();
-    userLoginRequest.mobileNumber = "18610000000";
-    userLoginRequest.verificationCode = "141212";
-
-    try {
-      mvc.perform(
-          MockMvcRequestBuilders.post("/api/user/loginWhenNoRequestBodyAnnotation")
-              .contentType(MediaType.APPLICATION_JSON)
-              .accept(MediaType.APPLICATION_JSON_VALUE)
-              .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型
-      ).andReturn();
-    } catch (Exception e) {
-      // request.mobileNumber is null
-    }
-  }
-
-  /**
-   * 添加 @RequestBody 后，参数值正确被绑定。
-   * 注意：@RequestBody接收的参数来自requestBody中，即请求体。Content-Type：“application/json”
-   *
-   * @throws Exception
-   */
-  @Test
-  public void whenUseRequestBodyAnnotation_thenCorrect() throws Exception {
+  public void whenUseRequestParamAnnotation_thenCorrect() throws Exception {
 
     UserLoginRequest userLoginRequest = new UserLoginRequest();
     userLoginRequest.mobileNumber = "18610000001";
     userLoginRequest.verificationCode = "141212";
+    System.out.println(objectMapper.writeValueAsString(userLoginRequest));
 
     MvcResult mvcResult =
         mvc.perform(
-            MockMvcRequestBuilders.post("/api/user/login")
+            MockMvcRequestBuilders.post("/api/user/loginWhenUseRequestParamAnnotation")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON_VALUE)
-                .content(objectMapper.writeValueAsString(userLoginRequest))
+                .header("request", objectMapper.writeValueAsString(userLoginRequest))
         ).andReturn();
 
     int status = mvcResult.getResponse().getStatus();
     assertEquals(200, status);
     String content = mvcResult.getResponse().getContentAsString();
-    assertEquals("success", content);
+    assertEquals(userLoginRequest.mobileNumber, content);
   }
 }
