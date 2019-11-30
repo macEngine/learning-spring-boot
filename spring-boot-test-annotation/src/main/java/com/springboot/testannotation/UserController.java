@@ -32,7 +32,12 @@ public class UserController {
     return "success";
   }
 
-  @PostMapping(value = "/loginWhenUseRequestParamAnnotation")
+  @GetMapping(value = "/loginWhenUseRequestParamAnnotationForGet")
+  public String loginWhenUseRequestParamAnnotation(@RequestParam String mobileNumber) {
+    return mobileNumber;
+  }
+
+  @PostMapping(value = "/loginWhenUseRequestParamAnnotationForPost")
   public String loginWhenUseRequestParamAnnotation(@RequestParam UserLoginRequest request) {
     return request.mobileNumber;
   }

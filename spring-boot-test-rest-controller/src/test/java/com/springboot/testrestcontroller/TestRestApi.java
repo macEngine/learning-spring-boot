@@ -1,7 +1,6 @@
 package com.springboot.testrestcontroller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springboot.testrestcontroller.UserLoginRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
 public class TestRestApi {
+  private static final String BASE_URI = "/api/testRestController/user";
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -63,13 +63,13 @@ public class TestRestApi {
   @Test
   public void whenLogin_thenCorrect() throws Exception {
 
-    com.springboot.testrestcontroller.UserLoginRequest userLoginRequest = new UserLoginRequest();
+    UserLoginRequest userLoginRequest = new UserLoginRequest();
     userLoginRequest.mobileNumber = "18610000000";
     userLoginRequest.verificationCode = "141212";
 
     MvcResult mvcResult =
         mvc.perform(
-            MockMvcRequestBuilders.post("/api/user/login")
+            MockMvcRequestBuilders.post(BASE_URI + "/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(userLoginRequest)) // 指定客户端能够接收的内容类型

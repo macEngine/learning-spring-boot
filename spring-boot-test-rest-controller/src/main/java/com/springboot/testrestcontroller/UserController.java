@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/user")
+@RequestMapping(value = "/api/testRestController/user")
 public class UserController {
 
   @GetMapping(value = "/getMobileNumber")

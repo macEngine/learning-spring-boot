@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
-public class Test_RequestParam_Annotation {
+public class Test_PathVariable_Annotation {
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
