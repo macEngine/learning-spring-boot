@@ -41,4 +41,12 @@ public class UserController {
   public String loginWhenUseRequestParamAnnotation(@RequestParam UserLoginRequest request) {
     return request.mobileNumber;
   }
+
+  @GetMapping(value = "/{id}/get")
+  public Long login(@PathVariable Long id) {
+    System.out.println("the order id=" + id);
+
+    // return the id for assert purpose
+    return id;
+  }
 }
