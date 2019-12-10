@@ -1,6 +1,7 @@
 package com.springboot.testannotation;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.filter.FormContentFilter;
 
 import javax.validation.Valid;
 
@@ -10,6 +11,7 @@ public class UserController {
 
   @GetMapping(value = "/getMobileNumber")
   public String getMobileNumber() {
+    FormContentFilter formContentFilter;
     return "18600000000";
 
   }
