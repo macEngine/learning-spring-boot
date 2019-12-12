@@ -1,5 +1,7 @@
-package com.springboot.scheduling;
+package com.springboot.scheduling.config;
 
+import com.springboot.scheduling.CustomAsyncExceptionHandler;
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -16,5 +18,10 @@ public class CustomerApplicationAsyncConfig implements AsyncConfigurer {
     threadPoolTaskExecutor.setBeanName("beijing-executor-for-application");
     threadPoolTaskExecutor.initialize();
     return threadPoolTaskExecutor;
+  }
+
+  @Override
+  public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+    return new CustomAsyncExceptionHandler();
   }
 }

@@ -1,4 +1,4 @@
-package com.springboot.scheduling;
+package com.springboot.scheduling.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

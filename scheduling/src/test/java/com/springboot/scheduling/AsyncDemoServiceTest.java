@@ -58,4 +58,13 @@ class AsyncDemoServiceTest {
     System.out.println("主线程执行，threadName=" + Thread.currentThread().getName());
   }
 
+  /**
+   * 测试使用自己定义的Executor来执行@Async方法。
+   */
+  @Test
+  void testAsyncWithCustomerExceptionHandler() {
+    asyncDemoService.asyncWithCustomerExceptionHandler();
+    System.out.println("主线程执行，threadName=" + Thread.currentThread().getName());
+  }
+
 }

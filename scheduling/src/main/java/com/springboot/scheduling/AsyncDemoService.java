@@ -35,4 +35,9 @@ public class AsyncDemoService {
     System.out.println("函数异步执行，threadName=" + Thread.currentThread().getName());
   }
 
+  @Async
+  public void asyncWithCustomerExceptionHandler() {
+    System.out.println("函数异步执行，threadName=" + Thread.currentThread().getName());
+    throw new RuntimeException("出错啦，除数不能为0");
+  }
 }
