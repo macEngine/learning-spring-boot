@@ -1,5 +1,6 @@
 package com.springboot.scheduling;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.concurrent.Future;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+@Slf4j
 class AsyncDemoServiceTest {
   @Autowired
   private AsyncDemoService asyncDemoService;
@@ -20,6 +22,9 @@ class AsyncDemoServiceTest {
   @Test
   void testAsyncWithVoidMethod_thenSucceed() {
     asyncDemoService.sendEmail();
+
+
+    log.info("主线程执行，threadName=" + Thread.currentThread().getName());
     System.out.println("主线程执行，threadName=" + Thread.currentThread().getName());
   }
 
