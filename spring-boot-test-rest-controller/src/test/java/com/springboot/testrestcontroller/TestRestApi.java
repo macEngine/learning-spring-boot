@@ -44,7 +44,7 @@ public class TestRestApi {
   public void whenGetMobileNumber_thenCorrect() throws Exception {
     MvcResult mvcResult =
         mvc.perform(
-            MockMvcRequestBuilders.get("/api/user/getMobileNumber")
+            MockMvcRequestBuilders.get(BASE_URI + "/getMobileNumber")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON_VALUE)
         ).andReturn();
