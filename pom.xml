@@ -4,14 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cowbro</groupId>
-    <artifactId>learning-spring-boot</artifactId>
+    <groupId>com.niuge.learning</groupId>
+    <artifactId>parent-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <name>parent-modules</name>
     <modules>
         <module>scheduling</module>
         <module>spring-boot-test-annotation</module>
         <module>spring-boot-test-rest-controller</module>
+        <module>parent-boot-2</module>
     </modules>
 
     <dependencies>
