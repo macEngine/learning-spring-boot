@@ -1,13 +1,11 @@
 package com.springboot.testrestcontroller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -16,8 +14,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+// @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest
+// @WebMvcTest本身就是JUnit5，不需要添加@RunWith(SpringJUnit4ClassRunner.class)注解
 public class TestRestApi {
   private static final String BASE_URI = "/api/testRestController/user";
 
@@ -30,7 +29,7 @@ public class TestRestApi {
   @Autowired
   WebApplicationContext webApplicationContext;
 
-  @Before
+  @BeforeEach
   public void init() {
     mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
   }
@@ -41,6 +40,7 @@ public class TestRestApi {
    * @throws Exception
    */
   @Test
+  // 要使用Jupiter不要使用JUnit4的。
   public void whenGetMobileNumber_thenCorrect() throws Exception {
     MvcResult mvcResult =
         mvc.perform(
