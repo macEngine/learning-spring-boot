@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-mvc-tutorial</artifactId>
+    <!--<packaging>jar</packaging>-->
     <dependencies>
         <!-- to enable JSP -->
         <dependency>

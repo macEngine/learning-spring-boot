@@ -9,7 +9,8 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
-
+  // 200213 WebApplicationInitializer目前只对war启动的项目有效，对jar启动的项目无效。
+  // WebApplicationInitializer初始化WEB应用，不需要WEB.XML
   public void onStartup(ServletContext container) throws ServletException {
     AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 
