@@ -14,10 +14,10 @@
         <module>spring-boot-test-annotation</module>
         <module>spring-boot-test-rest-controller</module>
         <module>parent-boot-2</module>
+        <module>spring-mvc-tutorial</module>
     </modules>
 
     <dependencies>
-        <!-- 日志 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -25,7 +25,6 @@
         </dependency>
     </dependencies>
     <properties>
-        <!-- logging -->
         <lombok.version>1.6.18</lombok.version>
     </properties>
 </project>
