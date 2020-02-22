@@ -1,4 +1,4 @@
-package com.niuge.learning.springmvctutorial;
+package learning.springmvctutorial;
 
 
 import org.springframework.boot.SpringApplication;

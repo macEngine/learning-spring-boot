@@ -1,7 +1,6 @@
-package com.niuge.learning.springmvctutorial;
+package learning.springmvctutorial;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -30,6 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
     // ("WEB-INF/view");会报错。
     // 结论：找不到资源，是module配置的问题，不是这里设置的问题。http://blogimg.v2sky.top/blogimg/1581562771539.png
     // mvn spring-boot:run可以跑起来。
+
+    // http://blogimg.v2sky.top/blogimg/1581563741785.png，正常访问结果的截图。
     bean.setSuffix(".jsp");
     return bean;
   }

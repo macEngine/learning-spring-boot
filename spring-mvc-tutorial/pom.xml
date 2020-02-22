@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.niuge.learning</groupId>
+        <groupId>learning</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
@@ -32,7 +32,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.niuge.learning.springmvctutorial.Application</mainClass>
+                    <mainClass>learning.springmvctutorial.Application</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>

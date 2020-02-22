@@ -1,4 +1,4 @@
-package com.niuge.learning.springmvctutorial;
+package learning.springmvctutorial;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -14,7 +14,7 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
   public void onStartup(ServletContext container) throws ServletException {
     AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 
-    context.scan("com.niuge.learning.springmvctutorial");
+    context.scan("learning.springmvctutorial");
 
     container.addListener(new ContextLoaderListener(context));
 
