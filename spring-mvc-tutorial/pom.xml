@@ -31,6 +31,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--200328，下面必须加版本，要不maven会报错-->
+                <version>1.5.9.RELEASE</version>
                 <configuration>
                     <mainClass>learning.springmvctutorial.Application</mainClass>
                     <layout>JAR</layout>
