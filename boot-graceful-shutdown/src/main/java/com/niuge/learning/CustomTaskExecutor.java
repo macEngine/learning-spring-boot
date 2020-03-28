@@ -14,6 +14,7 @@ public class CustomTaskExecutor {
     taskExecutor.setCorePoolSize(2);
     taskExecutor.setMaxPoolSize(2);
     taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+    taskExecutor.setAwaitTerminationSeconds(30);
     taskExecutor.initialize();
     return taskExecutor;
   }
