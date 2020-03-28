@@ -16,6 +16,7 @@
         <module>parent-boot-2</module>
         <module>spring-mvc-tutorial</module>
         <module>spring-BeanDefinitionOverrideException</module>
+        <module>boot-graceful-shutdown</module>
     </modules>
 
     <dependencies>
@@ -27,5 +28,10 @@
     </dependencies>
     <properties>
         <lombok.version>1.6.18</lombok.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 </project>
