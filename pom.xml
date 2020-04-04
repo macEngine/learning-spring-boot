@@ -17,6 +17,7 @@
         <module>spring-mvc-tutorial</module>
         <module>spring-BeanDefinitionOverrideException</module>
         <module>boot-graceful-shutdown</module>
+        <module>_200403-boot-actuator</module>
     </modules>
 
     <dependencies>
