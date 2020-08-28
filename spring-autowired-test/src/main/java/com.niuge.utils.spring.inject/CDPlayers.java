@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@Component("cdPlayers")
+@Component
 public class CDPlayers {
 
   @Autowired
