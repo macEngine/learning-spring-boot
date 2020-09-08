@@ -1,7 +1,10 @@
-gs/
+logs/
 generated/
-*.versionsBackup
-dump.rdb
+ml
+out/
+build/
+LOG_PATH_IS_UNDEFINED/
+*.log
 
 # IntelliJ
 .idea
@@ -9,4 +12,12 @@ dump.rdb
 *.iml
 *.ipr
 
-# maven
+# Mac
+.DS_Store
+
+# Maven
+log/*
+target/
+
+# Gradle
+.gradle/
